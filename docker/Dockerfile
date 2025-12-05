@@ -35,6 +35,8 @@ RUN pip install openmim && \
 RUN conda clean --all
 RUN git clone https://github.com/open-mmlab/mmdetection3d.git -b dev-1.x /mmdetection3d 
 # Drop optional requirements to avoid installing extras (json schema install stuck)
+RUN pip install -r /mmdetection3d/requirements/runtime.txt
+RUN pip install -r /mmdetection3d/requirements/tests.txt
 RUN sed -i '/optional.txt/d' /mmdetection3d/requirements.txt
 RUN cd /mmdetection3d && \
     pip install --no-cache-dir -e .
