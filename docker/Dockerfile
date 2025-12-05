@@ -41,4 +41,8 @@ RUN sed -i '/optional.txt/d' /mmdetection3d/requirements.txt
 RUN cd /mmdetection3d && \
     pip install --no-cache-dir -e .
 
+# Upgrade numpy to avoid version conflict
+# RUN pip install --upgrade numpy
+RUN pip install numpy==1.21.6
+
 WORKDIR /mmdetection3d
